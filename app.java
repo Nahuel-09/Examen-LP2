@@ -28,14 +28,13 @@ public class software extends javax.swing.JFrame {
         
         if (fila == -1) {
             JOptionPane.showMessageDialog(this, "Elija algun fila para eliminar");
+        } else {
+            int confirmar = JOptionPane.showConfirmDialog(this, "¿Quieres eliminar esta fila?", "¿Menú de confirmacion?", JOptionPane.YES_NO_OPTION);
+            
+            if (confirmar == fila) {
+                modelo.removeRow(fila);
+            }
         }
-        
-        int confirmar = JOptionPane.showConfirmDialog(this, "¿Quieres eliminar esta fila?", "¿Menú de confirmacion?", JOptionPane.YES_NO_OPTION);
-        
-        if (confirmar == fila) {
-            modelo.removeRow(fila);
-        }
-        
     }                                            
 
     private void btn_editarActionPerformed(java.awt.event.ActionEvent evt) {                                           
@@ -65,12 +64,11 @@ public class software extends javax.swing.JFrame {
     private void tablaUsuariosMouseClicked(java.awt.event.MouseEvent evt) {                                           
         int fila = tablaUsuarios.getSelectedRow();
         if (fila != -1) {
-            DefaultTableModel Modelo = (DefaultTableModel) tablaUsuarios.getModel();
-            nombre.setText(Modelo.getValueAt(fila, 1).toString());
-            apellido.setText(Modelo.getValueAt(fila, 2).toString());
-            correo.setText(Modelo.getValueAt(fila, 3).toString());
-            telefono.setText(Modelo.getValueAt(fila, 4).toString());
-            comentario.setText(Modelo.getValueAt(fila, 5).toString());
+            nombre.setText(modelo.getValueAt(fila, 1).toString());
+            apellido.setText(modelo.getValueAt(fila, 2).toString());
+            correo.setText(modelo.getValueAt(fila, 3).toString());
+            telefono.setText(modelo.getValueAt(fila, 4).toString());
+            comentario.setText(modelo.getValueAt(fila, 5).toString());
         }
     }                                                     
 }
